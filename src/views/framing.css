@@ -1,0 +1,52 @@
+/* One fixed transparent canvas; each View clips to its inner artwork rectangle. */
+.scene { inset: 0; pointer-events: none; }
+.scene:after { display: none; }
+.comic-page { position: relative; padding: 24px 4vw 44px; }
+.comic-page:first-of-type { padding-top: 132px; }
+.page-frame { max-width: 1120px; margin: 0 auto; padding: 24px; border: 3px solid #111; box-shadow: 9px 9px 0 #111; background: #f1ede2; }
+.page-heading { margin-bottom: 24px; }
+.page-heading > span, .page-foot, .comic-panel-heading > span { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .12em; }
+.page-heading h1 { font-size: clamp(30px, 5vw, 64px); line-height: .95; letter-spacing: -.035em; margin: 16px 0 10px; max-width: none; }
+.page-heading p { font-size: 20px; margin: 0; max-width: none; }
+.page-foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; }
+.comic-grid { display: grid; grid-template-columns: var(--page-columns); grid-template-areas: var(--page-areas); gap: var(--page-gap); align-items: start; }
+.comic-panel { min-width: 0; border: 3px solid #111; background: #f8f7f1; }
+.comic-panel-heading { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 2px solid #111; }
+.comic-panel-heading > span { color: #bc211c; font-weight: 600; }
+.comic-panel-heading h2 { font-size: 19px; line-height: 1; letter-spacing: .025em; margin: 0; }
+.panel-art { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: var(--panel-aspect); background: #111; container-type: size; }
+.panel-view { width: 100%; height: 100%; min-width: 0; min-height: 0; pointer-events: auto; }
+/* Preserve cinematic composition when the outer panel uses a different ratio. */
+.panel-cinematic .panel-view { width: min(100cqw, calc(100cqh * var(--shot-aspect))); height: auto; aspect-ratio: var(--shot-aspect); }
+.panel-caption { padding: 12px 14px; border-top: 2px solid #111; }
+.panel-caption > p { font-size: 17px; margin: 0; max-width: none; }
+.playback-controls { margin-top: 12px; pointer-events: auto; }
+.playback-buttons { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.playback-buttons button { border: 2px solid #111; background: #111; color: #fff; padding: 8px 14px; cursor: pointer; }
+.playback-buttons button:disabled { opacity: .5; cursor: default; }
+.playback-buttons button:focus-visible, .playback-timeline input:focus-visible { outline: 3px solid #bc211c; outline-offset: 3px; }
+.playback-buttons span, .playback-timeline { font-family: 'DM Mono', monospace; font-size: 11px; }
+.playback-timeline { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; margin-top: 14px; }
+.playback-timeline input { width: 100%; min-width: 0; accent-color: #bc211c; }
+.panel-caption .panel-status { font-size: 15px; margin-top: 12px; }
+.panel-error { color: #a31b18; overflow-wrap: anywhere; }
+
+@media (max-width: 700px) {
+  .masthead { padding: 18px 4vw; gap: 12px; }
+  .masthead small { display: none; }
+  .masthead button { margin-left: auto; }
+  .comic-page { padding: 18px 4vw 30px; }
+  .comic-page:first-of-type { padding-top: 110px; }
+  .page-frame { padding: 12px; box-shadow: 5px 5px 0 #111; }
+  .page-heading { margin-bottom: 18px; }
+  .page-heading h1 { font-size: clamp(28px, 8vw, 48px); }
+  .page-heading p { font-size: 17px; }
+  .comic-grid { grid-template-columns: var(--mobile-columns); grid-template-areas: var(--mobile-areas); }
+  .comic-panel-heading { padding: 9px 10px; gap: 8px; }
+  .comic-panel-heading h2 { font-size: 17px; }
+  .panel-caption { padding: 10px; }
+  .playback-timeline { grid-template-columns: minmax(0, 1fr) auto; }
+  .playback-timeline > span { grid-column: 1 / -1; }
+  .page-foot { font-size: 8px; }
+  .scroll-hint { bottom: 12px; font-size: 8px; padding: 8px 10px; }
+}

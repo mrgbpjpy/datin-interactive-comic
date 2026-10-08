@@ -1,0 +1,17 @@
+.vercel
+node_modules/
+dist/
+*.tsbuildinfo
+.cache/
+coverage/
+backups/
+originals/
+source-assets/
+*.zip
+*.ZIP
+*.7z
+*.bak
+*.blend
+*.blend1
+public/models/*
+!public/models/Datin.web.glb

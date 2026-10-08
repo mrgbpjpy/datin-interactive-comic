@@ -1,0 +1,73 @@
+# ============================================================
+# BUILD / DEVELOPMENT FILES
+# Vercel installs dependencies and builds dist remotely.
+# ============================================================
+
+node_modules/
+dist/
+build/
+.git/
+.vercel/
+.cache/
+coverage/
+test-results/
+playwright-report/
+*.tsbuildinfo
+*.log
+
+
+# ============================================================
+# SOURCE / BACKUP FILES
+# Never deploy Blender sources, archives, or backups.
+# ============================================================
+
+backups/
+originals/
+source-assets/
+
+**/backups/**
+**/originals/**
+**/source-assets/**
+
+**/*.original*
+**/*.backup*
+**/*.bak
+
+**/*.zip
+**/*.ZIP
+**/*.7z
+**/*.rar
+
+**/*.blend
+**/*.blend1
+
+
+# ============================================================
+# WEB-READY 3D MODELS
+# Ignore models by default, then explicitly allow the
+# optimized character and DATIN comic shot GLBs.
+#
+# This automatically supports:
+# Datin_ComicV2.glb
+# Datin_ComicV3.glb
+# Datin_ComicV4.glb
+# Datin_ComicV5.glb
+# Datin_ComicV6.glb
+# etc.
+# ============================================================
+
+public/models/*
+
+!public/models/Datin.web.glb
+!public/models/Datin_ComicV*.glb
+!public/models/Record_Player.glb
+
+
+
+# ============================================================
+# COMIC MUSIC / AUDIO
+# Explicitly keep soundtrack assets in deployment.
+# ============================================================
+
+!public/music/
+!public/music/**
