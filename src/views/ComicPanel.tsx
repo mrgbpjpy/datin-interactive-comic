@@ -385,6 +385,7 @@ export function ComicPanel({
           visible={active}
           active={active}
           onError={setError}
+          musicBubble={panel.id === 'p04'}
         />
 
       </View>

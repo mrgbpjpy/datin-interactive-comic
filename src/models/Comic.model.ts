@@ -207,8 +207,8 @@ export const pages: ComicPageDefinition[] = [
       {
         // P04 — the call: scroll drives Datin, camera and microphone.
         id: 'p04',
-        title: 'THE CALL',
-        caption: 'An unexpected interruption.',
+        title: 'The Session',
+        caption: 'Laying down vocals in the studio.',
         dialogue: '',
         placement: { area: 'right' },
         aspectRatio: 1,
